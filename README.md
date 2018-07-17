@@ -1,1 +1,1 @@
-# medindia-rwd
+# Medindia rwd
