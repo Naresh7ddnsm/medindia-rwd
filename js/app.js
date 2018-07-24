@@ -42,3 +42,63 @@ var submenu = function(e) {
 for (var i = 0; i < menuOpen.length; i++) {
     menuOpen[i].addEventListener('click', submenu, false);
 }
+/*********************/
+// popup development
+/*********************/
+
+var PopupModel = {
+	popupmodel: document.getElementsByClassName('popup-model'),
+	init: function(){
+		this.events();
+	},
+	popupOpen:  function(id){
+		document.getElementById(id).classList.add('open')
+	},
+	popupClose: function(id){
+		document.getElementById(id).classList.remove('open')
+	},
+	events: function(){
+		for (var i = 0; i < this.popupmodel.length; i++) {
+			this.popupmodel[i].addEventListener('click', function(e){
+				console.log(e.target.classList)
+			})
+		}
+	}
+}
+
+
+// OnLoad state
+
+window.addEventListener('load', function(){
+	PopupModel.init();
+})
+
+window.addEventListener('click', function(e){
+	var _popupEle = e.target.getAttribute('data-popup-model');
+	if(_popupEle != null){
+		var ele = e.target,
+			target = ele.getAttribute('data-target');
+		if(_popupEle == "open"){
+			PopupModel.popupOpen(target);
+		} else {
+			PopupModel.popupClose(target);
+		}
+	}
+})
+
+
+// function popupOpen(e){
+// 	var target = e.getAttribute('data-target');
+// 	document.getElementById(target).classList.add('open')
+// }
+// function popupClose(e){
+// 	var target = e.getAttribute('data-target');
+// 	document.getElementById(target).classList.remove('open')
+// }
+
+// for (var i = 0; i < popupmodel.length; i++) {
+//     popupmodel[i].addEventListener('click', function(e){
+// 		console.log(e.target.classList)
+// 	})
+// }
+
